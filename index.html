@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>A-lazyload</title>
+  <style>
+    *{margin:0;padding:0;}
+    /* .ggg{
+      height:100vh;
+      overflow-y:scroll;
+      -webkit-overflow-scrolling: touch;
+    } */
+    img{height: 300px;display: block;}
+    img:nth-child(2n){height: 200px;}
+  </style>
+</head>
+<body>
+  <div class="ggg">
+      <img  width="100%" A-lazyImg="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2071852957,795029705&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=939799037,3765822514&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3276620849,2291566324&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3607858772,109535098&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1061274687,3911902149&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2946849628,3363141551&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2784253280,2940208709&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1211052648,3402069233&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://www.baidu.com/" alt="">
+      <img  width="100%" A-lazyImg="https://ss0.bdstatic.com/" alt="">
+      <img  width="100%" A-lazyImg="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2721217551,1632201013&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2488348412,1533809388&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4129211793,2065796434&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3834033133,794571903&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2822376312,1740896023&fm=26&gp=0.jpg" alt="">
+      <img  width="100%" A-lazyImg="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1378631166,303236243&fm=26&gp=0.jpg" alt="">
+  </div>
+  <script src="js/AlazyLoad.js"></script>
+  <script>
+    let ff = new AlazyLoad({
+      loading:'https://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=f71e50728113632715b8ca35a1bf8cd4/0e2442a7d933c895378254d5da1373f0830200a4.jpg',
+      loadError:'img/imgfail.jpg'
+    });
+
+    // var lazyLoad = (function(){
+    //   var clock;
+    //   function init(){
+    //     window.addEventListener('load',function(){
+    //       checkShow();
+    //     })
+    //     window.addEventListener('scroll',function(){
+    //       if(clock){
+    //         clearTimeout(clock)
+    //       }
+    //       clock = setTimeout(function(){
+    //         checkShow();
+    //       },100)
+    //     })
+    //   }
+      
+    //   function checkShow(){
+    //     let nodeTotal = document.querySelectorAll("img[A-lazyImg]");
+    //     nodeTotal.forEach(function(item){
+    //       if(item.getAttribute('isloaded')){
+    //     		return;
+    //   		}
+    //       item.setAttribute('src','img/loading.gif')
+    //       if(shouldShow(item)){
+    //         showImg(item)
+    //       }
+    //     })
+    //   }
+    //   function shouldShow($node){
+    //     var scrollT = document.documentElement.scrollTop || document.body.scrollTop,
+    //       winH = window.screen.height || document.documentElement.clientHeight || document.body.clientHeight,
+    //       top = $node.offsetTop;
+    //     if(top < winH + scrollT){
+    //         return true;
+    //       }else{
+    //         return false;
+    //       }
+    //   }
+    //   function showImg($node){
+    //     var isSuccess;
+    //     $node.setAttribute('src',$node.getAttribute('A-lazyImg'));
+    //     // 加载失败
+    //     $node.onerror = function(){
+    //       this.setAttribute('src','img/imgfail.jpg');
+    //       this.onerror = null;
+    //     }
+    //     $node.setAttribute('isLoaded', true); 
+    //   }
+
+    //   return {
+    //     init: init
+    //   }
+    // })()
+    // lazyLoad.init();
+  </script>
+</body>
+</html>
